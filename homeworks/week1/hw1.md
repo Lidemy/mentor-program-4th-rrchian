@@ -16,6 +16,15 @@
 1. 將 github 上的程式實驗導師計畫 repo 的 fork 下載至本地端
     1. cd desktop //問題: 每次開啟 terminal 有辦法預設就在桌面嗎？
     2. git clone https://github.com/rrchian/mentor-program-4th.git
-2. 修改本地端的作業檔 hw'N'
+2. 將下載的 repo git 到雲端上
+    1. git remote add origin https://github.com/rrchian/mentor-program-4th.git
+    2. git branch week1
+    3. git checkout week1
+    4. git add .
+    5. git commit -am 'test'
+    6. git push origin week1
+3. 修改本地端的作業檔 hw'N'
     1. 儲存更改
     
+    
+
