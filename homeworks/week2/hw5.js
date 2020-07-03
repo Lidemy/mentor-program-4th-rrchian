@@ -4,7 +4,7 @@ function join(arr, concatStr) {
         arr_join = arr_join + arr[i] + concatStr;
         }
     arr_join += arr[arr.length-1]
-    return arr_joing
+    return arr_join
 }
 
 function repeat(str, times) {
