@@ -1,0 +1,11 @@
+{
+  "name": "week3",
+  "version": "1.0.0",
+  "description": "在交這週的作業以前，請務必確認每一題都已經通過 [Lidemy OJ](https://oj.lidemy.com/) 的測試並拿到 AC。",
+  "main": "hw1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
