@@ -5,6 +5,9 @@ const keyword = process.argv[2];
 request(
   `https://restcountries.eu/rest/v2/name/${keyword}`,
   (error, response, body) => {
+    if (error) {
+      console.log('獲取失敗', error);
+    }
     if (response.statusCode === 404) {
       console.log('找不到國家資訊');
       return;

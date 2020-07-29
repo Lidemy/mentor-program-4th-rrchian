@@ -50,3 +50,23 @@
     5. ``git branch -d week1``
     6. ``git branch -v ``
 
+----
+
+1. 先看範例修改作業
+2. ``git branch weekX``
+3. ``git checkout weekX``
+4. ``git commit -am ''``
+5. ``git push origin weekX ``
+6. 回報作業
+    1. 到 github 上點擊 pull request
+    2. compare and pull request > 將 week1 merge 進 master
+    3. create pull request
+    4. 到 lidemy 學習系統 > 作業列表 > 新增作業（記得 PR 連結，是 pull request 頁面的連結，有問題的話可以在 PR 頁面詢問） 
+7. 作業修改後
+    1. 若 github 上的 pr 已經被 merge 後
+    2. 到本地的 branch
+    3. ``git checkout master``
+    4. ``git pull origin master``
+    5. ``git branch -d week1``
+    6. ``git branch -v ``
+
