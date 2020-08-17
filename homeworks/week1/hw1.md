@@ -64,7 +64,6 @@
     4. 到 lidemy 學習系統 > 作業列表 > 新增作業（記得 PR 連結，是 pull request 頁面的連結，有問題的話可以在 PR 頁面詢問） 
 7. 作業修改後
     1. 若 github 上的 pr 已經被 merge 後
-    2. 到本地的 branch
     3. ``git checkout master``
     4. ``git pull origin master``
     5. ``git branch -d week1``
