@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+
+<!--
+reminder:
+1. innerHTML = ``
+
+todo_list:
+1. 想增加「當 hover 某一個 todo_list 時，其他 todo_list 會變成透明的效果」
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <title>To-Do List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f6f6f6;
+        }
+
+        .main {
+            width: 40%;
+            margin: 5% auto;
+        }
+
+        h2 {
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-size: 24px;
+        }
+
+        .todo_input_box {
+            position: relative;
+            left: 5%;
+        }
+
+        .todo_input {
+            height: 24px;
+            text-align: start;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 0 none;
+            background: white;
+            width: 80%;
+        }
+
+        .todo_list {
+            display: flex;
+            position: relative;
+            margin-top: 18px;
+            height: 32px;
+            background: #E6D1B1;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
+            transition: transform 0.5s;
+            border-radius: 8px;
+        }
+
+        .todo_list:hover {
+            transform: scale(1.1);
+            z-index: 100;
+            background: #FFCFAD;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, .2);
+        }
+
+        .todo_list span {
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+        }
+
+        .top_wrapper {
+            background: #B8AA95;
+            border-radius: 18px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
+        }
+
+        .todo_checked {
+            text-decoration: line-through;
+        }
+
+        .todo_list span {
+            line-height: 30px;
+            text-align: left;
+            flex: 1;
+        }
+
+        .todo_checkbox {
+            cursor: pointer;
+            position: relative;
+            transform: translate(50%, 35%);
+            width: 18px;
+            height: 18px;
+            margin-right: 24px;
+        }
+
+        .btn_delete {
+            cursor: pointer;
+            padding: 2px;
+            border-radius: 4px;
+            border: solid 0.2px;
+            width: 54px;
+            height: 24px;
+            position: relative;
+            transform: translate(120%, 20%);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
+        }
+        
+        .todo_submit {
+            cursor: pointer;
+            background: none;
+            border: solid 0.2px;
+            border-radius: 8px;
+            padding: 2px;
+            position: relative;
+            transform: translate(25%, 8%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="top_wrapper">
+            <h2>To-Do List</h2>
+            <div class="inputs">
+                <section class="todo_input_box">
+                    <input type="text" class="todo_input" placeholder="add some todos here!">
+                    <button type="button" class="todo_submit"><i class="icon-arrow-right"></i></button>
+                </section>
+            </div>
+        </div>
+        <div class="todo_area ">
+            <div class="todo_list">
+                <input type="checkbox" class="todo_checkbox">
+                <span>sample todo</span>
+                <button type="button" class="btn_delete"><i class="icon-trash"></i></button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 偵測送出按鈕，建立新的 todo_list
+        // reminder: 沒有想到如果沒有輸入值的話，就不應該新增新的 div，應該 return
+        document.querySelector(".todo_submit").addEventListener("click", function() {
+
+            const value = document.querySelector(".todo_input").value;
+            if (!value) return;
+
+            const todo_list = document.querySelector(".todo_area");
+            const todo_list_content = document.createElement("div");
+            todo_list_content.setAttribute("class", "todo_list");
+            todo_list_content.innerHTML =
+                `
+                <input type="checkbox" class="todo_checkbox">
+                <span>${escapeHtml(value)}</span>
+                <button type="button" class="btn_delete"><i class="icon-trash"></i></button>
+            `
+            todo_list.appendChild(todo_list_content);
+            document.querySelector(".todo_input").value = '';
+        })
+
+
+        // 偵測刪除按鈕，刪除當前 todo_list
+        // 偵測 checkbox，若是 checked，則增加 class 改變 css 樣式
+        document.querySelector(".todo_area").addEventListener("click", function(e) {
+
+            if (e.target.className === "btn_delete") {
+                const div = e.target.parentNode
+                div.innerHTML = ""
+                const divParent = div.parentNode
+                divParent.removeChild(div)
+            }
+
+            if (e.target.type === "checkbox") {
+                const div = e.target.parentNode;
+                div.classList.toggle("todo_checked");
+            }
+        })
+
+        // 跳脫字元
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+
+</html>

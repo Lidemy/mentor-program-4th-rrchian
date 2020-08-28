@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<!--
+Huli 解法
+1. * 標示符號可以用偽元素 :after 來寫
+2. 置中可以用 margin: 0 auto;
+3. 寫寬高的時候，可以盡量用 margin, padding 等去推，不要直接寫死寬高
+4. 寫選項之所以用 label，是為了可以不用只點選框框才有反應，點內容文字也可以等於點到選項
+5. 要記得如果 radio 要設成單選，一定要是同樣的 name
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>新拖延運動報名表單</title>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0″>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <style>
+        .top_deco {
+            height: 8px;
+            border: solid 6px #fad312;
+            background-color: #fad312;
+        }
+
+        .wrapper {
+            padding-top: 20px;
+            padding-left: 60px;
+        }
+
+        h2 {
+            height: 32px;
+            font-family: MicrosoftJhengHei;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: -1.8px;
+            text-align: left;
+        }
+
+        .lazy_info {
+            padding-top: 35px;
+            font-family: MicrosoftJhengHei;
+            font-size: 14px;
+            letter-spacing: 1.1px;
+        }
+
+        .info_content+.info_content {
+            margin-top: 11px;
+            margin-bottom: 22px;
+        }
+
+        .highlight {
+            font-family: MicrosoftJhengHei;
+            font-size: 12px;
+            color: #e74149;
+        }
+
+        .user_info {
+            padding: 45px 0;
+        }
+
+        .user_info div {
+            font-family: MicrosoftJhengHei;
+            font-size: 20px;
+            letter-spacing: 1.1px;
+        }
+
+        .user_info_input {
+            margin-top: 20px;
+            width: 287px;
+        }
+
+        .user_info .note {
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .user_info label {
+            display: block;
+            margin-top: 24px;
+            font-size: 14px;
+        }
+
+        .submit_button {
+            width: 92px;
+            height: 40px;
+            border-radius: 3px;
+            background-color: #fad312;
+            background-color: #fad312;
+        }
+
+        .footer_info {
+            font-family: MicrosoftJhengHei;
+            font-size: 13px;
+            color: #999999;
+        }
+
+        #footer {
+            padding: 20px;
+            background-color: #000000;
+            text-align: center;
+        }
+
+        .whole_wrapper {
+            width: 645px;
+            background: white;
+            margin: 5% auto;
+            box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        input::placeholder {
+            font-family: MicrosoftJhengHei;
+            font-size: 16px;
+            color: #afafaf;
+        }
+
+        body {
+            background: rgb(240, 240, 240);
+        }
+
+        .user_info .error {
+            margin-top: 6px;
+            font-family: MicrosoftJhengHei;
+            font-size: 12px;
+            color: #e74149;
+        }
+
+        .hide_error .error {
+            visibility: hidden;
+        }
+
+        @media(max-width: 768px) {
+            .lazy_info {
+                padding-top: 15px;
+            }
+
+            .user_info {
+                padding: 20px 0;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="whole_wrapper">
+        <div class="top_deco"></div>
+        <div class="wrapper">
+            <h2>新拖延運動報名表單</h2>
+            <div class="lazy_info">
+                <div class="info_content">活動日期：2020/12/10 ~ 2020/12/11 <br></div>
+                <div class="info_content">活動地點：台北市大安區新生南路二段1號</div>
+                <div class="highlight"><sup>*</sup>必填</div>
+            </div>
+            <form name="lazy_form">
+                <div class="form">
+                    <div class="user_info hide_error required">
+                        <div>暱稱 <span class="highlight"><sup>*</sup></span></div>
+                        <input type="text" class="user_info_input" placeholder="您的回答" name="name"><br>
+                        <div class="error">請輸入您的暱稱</div>
+                    </div>
+                    <div class="user_info hide_error required">
+                        <div>電子郵件 <span class="highlight"><sup>*</sup></span></div>
+                        <input type="text" class="user_info_input" placeholder="您的電子郵件" name="email"><br>
+                        <div class="error">請輸入您的電子郵件</div>
+                    </div>
+                    <div class="user_info hide_error required">
+                        <div>手機號碼 <span class="highlight"><sup>*</sup></span></div>
+                        <input type="text" class="user_info_input" placeholder="您的手機號碼" name="phone"><br>
+                        <div class="error">請輸入您的手機號碼</div>
+                    </div>
+                    <div class="user_info hide_error required">
+                        <div>報名類型 <span class="highlight"><sup>*</sup></span></div>
+                        <label for="bed">
+                            <input type="radio" id="bed" name="type"> 躺在床上用想像力實作
+                        </label>
+                        <label for="phone">
+                            <input type="radio" id="phone" name="type"> 趴在地上滑手機找現成的
+                        </label><br>
+                        <div class="error">請選擇您的報名類型</div>
+                    </div>
+                    <div class="user_info hide_error required">
+                        <div>怎麼知道這個活動的？ <span class="highlight"><sup>*</sup></span></div>
+                        <input type="text" class="user_info_input" placeholder="您的回答" name="how_to_know"><br>
+                        <div class="error">請輸入您的回答</div>
+                    </div>
+                    <div class="user_info">
+                        <div>其他</div>
+                        <div class="note">對活動的一些建議</div>
+                        <input type="text" class="user_info_input" placeholder="您的回答" name="suggest">
+                    </div>
+                </div>
+                <input type="submit" class="submit_button" value="提交">
+            </form>
+            <div class="user_info">
+                <div class="note">請勿透過表單送出您的密碼。</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="footer_info">© 2020 © Copyright. All rights Reserved.</div>
+    </footer>
+    <script src="validate.js"></script>
+</body>
+
+</html>
