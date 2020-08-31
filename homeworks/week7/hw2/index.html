@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+
+<!--
+Huli
+1. 使用 line-height 置中，將 div 高度與文字高度設一樣，就可以完成垂直置中
+-->
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>餐廳官網</title>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0″>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <style>
+        .navbar {
+            box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+            padding: 0px 20px;
+
+        }
+
+        .navbar .wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 84px;
+            background-color: white;
+
+        }
+
+        .wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+
+        .navbar_site-name {
+            font-family: Questrial;
+            font-size: 36px;
+            color: #489846;
+        }
+
+        .navbar_list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            font-family: MicrosoftJhengHei;
+            font-size: 18px;
+        }
+
+        .navbar_list li {
+            margin-left: 12px;
+            border-radius: 8px;
+            transition: background 0.15s ease-in;
+
+        }
+
+        .navbar_list li.active,
+        .navbar_list li:hover {
+            background: #ff7286;
+        }
+
+
+        .navbar_list li.active a,
+        .navbar_list li:hover a {
+            color: white;
+        }
+
+        .navbar_list li a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 12px 24px;
+
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        .section {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .section_title {
+            display: inline-block;
+            font-size: 36px;
+            border-left: solid 15px #a3dea2;
+            padding-left: 16px;
+            margin-bottom: 36px;
+        }
+
+        .footer_btm {
+            background: #35564b;
+            padding: 12px;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .footer_top {
+            background: #e8efee;
+            padding: 32px;
+            color: #484848;
+
+        }
+
+        .footer_top .wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer_info div+div {
+            margin-top: 10px;
+        }
+
+        .footer_info {
+            margin-right: 16px;
+        }
+
+        .footer_site {
+            color: #489846;
+            font-size: 36px;
+            font-family: Questrial;
+
+        }
+
+        footer {
+            margin-top: 48px;
+        }
+
+        .FAQ_number {
+            color: #70b282;
+            font-size: 24px;
+            line-height: 24px;
+
+        }
+
+        .FAQ_content h3 {
+            margin-top: 0;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 24px;
+
+        }
+
+        .FAQ_content p {
+            font-size: 16px;
+        }
+
+        .FAQ_content {
+            text-align: left;
+            margin: 0 20px;
+            padding-bottom: 24px;
+        }
+
+        .FAQ_section {
+            display: flex;
+            border-bottom: solid 1px #a6e2c0;
+            max-width: 768px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .FAQ_content a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .FAQ_content a:hover {
+            color: lightpink;
+            text-decoration: underline;
+        }
+
+        .FAQ_section+.FAQ_section {
+            margin-top: 24px;
+        }
+
+        .FAQ_less {
+            height: 42px;
+            overflow: hidden;
+            transition:
+        }
+
+        @media(max-width: 768px) {
+            .navbar .wrapper {
+                flex-direction: column;
+                height: 120px;
+                justify-content: space-between;
+                padding: 0px;
+            }
+
+            .navbar_sitename {
+                margin-top: 10px;
+            }
+
+            .navbar_list {
+                display: flex;
+                width: 100%;
+            }
+
+            .navbar_list li {
+                flex: 1;
+                margin-left: 0;
+                border-radius: 0;
+                text-align: center;
+            }
+
+            .footer_top .wrapper {
+                flex-direction: column-reverse;
+
+            }
+
+            .footer_info {
+                margin-right: 0;
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="wrapper">
+            <div class="navbar_site-name">Just A Bite!</div>
+            <ul class="navbar_list">
+                <li><a href="#">抽個大獎</a></li>
+                <li><a href="#">我要點餐</a></li>
+                <li><a href="#">查詢訂單</a></li>
+                <li class="active"><a href="#">常見問題</a></li>
+
+            </ul>
+
+        </div>
+    </nav>
+    <section class="section">
+        <h2 class="section_title">FAQ - 常見問題</h2>
+        <div class="FAQ_section FAQ_less">
+            <div class="FAQ_number">Q1: </div>
+            <div class="FAQ_content">
+                <h3>會員制度</h3>
+                <p>
+                    <pre>
+如何成為會員?
+    1. 點選註冊會員，線上註冊，立即享有會員價。
+    2. 直營店面可直接填表申請會員，立即享有會員價。
+成為會員，有什麼好處?
+    1. 雲端會員系統，購物無須攜帶會員卡與證件。
+    2. 享有會員價且累積消費成為VIP會員。
+    3. 售後服務保障。
+消費如何累計，如何查詢?
+    1. 結帳後系統自動記錄與累積消費紀錄，登入會員專區即可查詢。
+                </pre>
+            </div>
+        </div>
+        <div class="FAQ_section FAQ_less">
+            <div class="FAQ_number">Q2: </div>
+            <div class="FAQ_content">
+                <h3>網站登入問題</h3>
+                <p>
+                    <a href="*">直營店會員卡開卡教學</a><br><br>
+                    <a href="*">忘記密碼了? 請重置密碼!</a></p>
+            </div>
+        </div>
+        <div class="FAQ_section FAQ_less">
+            <div class="FAQ_number">Q3: </div>
+            <div class="FAQ_content">
+                <h3> 購物流程問題</h3>
+                <p>
+                    <a href="*">網路下單前請先注意! 購物須知</a><br><br>
+                    <a href="*">收到商品或尺寸有問題? 請看售後服務</a><br><br>
+                    <a href="*">購物車無法更新如何處理?
+                </p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer_top">
+            <div class="wrapper">
+                <div class="footer_info">
+                    <div>餐館地址: 天上地下天堂路三分之一里六段520號</div>
+                    <div>訂位專線：02-1314-5566</div>
+                    <div>營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</div>
+                    <div>email：service@justabite.com.tw</div>
+                </div>
+                <div>
+                    <div class="footer_site">Just A Bite!</div>
+                    <div>Facebook / Instagram / Youtube</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_btm">
+            Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有
+        </div>
+    </footer>
+    <script>
+        const FAQs = document.querySelectorAll('.FAQ_section')
+        for (let FAQ of FAQs) {
+            FAQ.addEventListener('click', function() {
+                FAQ.classList.toggle('FAQ_less');
+            })
+        }
+        /*
+        document.querySelectorAll('.FAQ_section').addEventListener('click', function() {
+            document.querySelectorAll('.FAQ_section').classList.toggle('FAQ_less');
+        })
+        */
+    </script>
+</body>
+
+</html>
