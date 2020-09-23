@@ -1,0 +1,214 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+body {
+    background: #2f2fa2;
+}
+
+.warning {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 12%;
+    margin-right: 36px;
+    background: #f64c72;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 8px;
+    font-weight: 500;
+    letter-spacing: 0.4ch;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+main {
+    display: flex;
+    margin: 50px 20%;
+}
+
+.main-wrap {
+    margin-top: 144px;
+}
+
+.input {
+    width: 350px;
+    padding: 36px;
+    border-right: 1.5px dashed #F8F8FF;
+    margin-right: 12px;
+}
+
+.input__nickname {
+    margin-bottom: 12px;
+}
+
+.input__nickname input, .input__comment textarea{
+    background: #F8F8FF;
+    color: #2f2fa2;
+    padding: 10px;
+    margin-top: 18px;
+    margin-bottom: 12px;
+    border: 5px solid #8ee4af;
+    border-radius: 12px;
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input__nickname span, .input__comment span {
+    background: #F8F8FF;
+    color: #2f2fa2;
+    padding: 6px;
+    border: 5px solid #8ee4af;
+    border-radius: 12px;
+    font-weight: 500;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn__submit{
+    margin-top: 36px;
+    cursor: pointer;
+    background: #F8F8FF;
+    color: #f64c72;
+    padding: 6px;
+    border: 5px solid #f64c72;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn__submit:hover {
+    background: #f64c72;
+    color: #F8F8FF;
+    border: 5px solid #f64c72;
+}
+
+.comments {
+    width: 600px;
+    position: relative;
+    background: #F8F8FF;
+    color: #2f2fa2;
+    border: 5px solid #8ee4af;
+    border-radius: 12px;
+    font-weight: 500;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.comment {
+    margin-bottom: 24px;
+    border-bottom: 1.5px dashed #8ee4af;
+}
+
+.comments h1 {
+    text-align: center;
+    background: #F8F8FF;
+    color: #2f2fa2;
+    padding: 6px;
+    border: 5px solid #8ee4af;
+    border-radius: 12px;
+    margin: 12px 150px;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.user--info {
+    display: flex;
+}
+
+.user--avatar img{
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #F8F8FF;
+    margin-left: 12px;
+}
+
+.comment__message{
+    margin-left: 12px;
+    max-width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    word-break: break-all;
+}
+
+.user--info--name {
+    color: #2f2fa2;
+    font-weight: bold;
+}
+
+.user--info--name--time {
+    color: #F8F8FF;
+}
+
+.user--info--name, .user--info--time{
+    margin-left: 24px;
+    line-height: 50px;
+}
+
+.error {
+    background: #F8F8FF;
+    color: #f64c72;
+    margin-right: 132px;
+    padding: 6px;
+    border: 5px solid #f64c72;
+    border-radius: 12px;
+    font-weight: 800;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-wrap {
+    display: flex;
+}
+
+.btn_register, .btn_login, .btn_logout{
+    margin: 12px;
+    cursor: pointer;
+    background: #F8F8FF;
+    color: #f64c72;
+    padding: 8px;
+    border: 3px solid #f64c72;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.btn_register:hover, .btn_login:hover, .btn_logout:hover {
+    background: #f64c72;
+    color: #F8F8FF;
+    border: 3px solid #f64c72;
+}
+
+.title_register {
+    text-align: center;
+    background: #F8F8FF;
+    color: #2f2fa2;
+    padding: 6px;
+    border: 5px solid #8ee4af;
+    border-radius: 12px;
+    transform: translateY(-300%);
+    margin: 0px 24px;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login_reminder {
+    background: #F8F8FF;
+    color: #f64c72;
+    margin-right: 30px;
+    padding: 6px;
+    border: 5px solid #f64c72;
+    border-radius: 12px;
+    font-weight: 800;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login_hello {
+    background: #F8F8FF;
+    color: #f64c72;
+    margin-bottom: 60px;
+    padding: 6px;
+    border: 5px solid #f64c72;
+    border-radius: 12px;
+    font-weight: 800;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
