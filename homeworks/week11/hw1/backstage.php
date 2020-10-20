@@ -9,6 +9,12 @@
   if(!empty($_SESSION['username'])) {
     $username = $_SESSION['username'];
     $user = getUserFromUsername($username);
+    $role = getUserFromUsername($username)['role'];
+  }
+
+  if($role !== 'admin'){
+    header('Location: ./index.php');
+    exit();
   }
 
   $page = 1;

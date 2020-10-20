@@ -37,7 +37,7 @@
 
 <body>
   <div class="header-wrap">
-    <header class="warning">嗨！這是程式導師實驗計畫第四期第十一週的作業。網站已更新資訊安全的防護，歡迎各種惡意攻擊。</header>
+    <header class="warning">嗨！這是程式導師實驗計畫第四期第十一週的作業。網站已更新資訊安全的防護，歡迎各種惡意攻擊。</header>
   </div>
   <main class="main-wrap">
     <div class="input">
