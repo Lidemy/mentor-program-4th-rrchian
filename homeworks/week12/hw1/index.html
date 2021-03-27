@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>留言板 API</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <style>
+    .card {
+      margin-top: 12px;
+    }
+  </style>
+  <script>
+    function escape(toOutput) {
+      return toOutput
+        .replace(/\&/g, '&amp;')
+        .replace(/\</g, '&lt;')
+        .replace(/\>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/\'/g, '&#x27')
+        .replace(/\//g, '&#x2F');
+    }
+
+    function appendDiscussionToDOM(container, discussion, isPrepend) {
+      // card template
+      const html = `
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">${escape(discussion.nickname)}</h5>
+            <p class="card-text">${escape(discussion.content)}</p>
+          </div>
+        </div>
+      `;
+
+      if (isPrepend) {
+        container.prepend(html);
+      } else {
+        container.append(html);
+      }
+    }
+
+    // cursor-based id
+    function getDiscussionsAPI(siteKey, before, cb) {
+      let url = `http://mentor-program.co/mtr04group3/rexrexchian/week12/hw1/api_comments.php?site_key=${siteKey}`;
+
+      if (before) {
+        url += '&before=' + before;
+      }
+
+      $.ajax({
+        url
+      }).done(function(data) {
+        cb(data);
+      });
+    }
+
+    const siteKey = 'rex';
+    const loadMoreButtonHTML = '<button class="load-more btn btn-primary">載入更多</button>';
+    let lastId = null;
+    let isEnd = false;
+
+    $(document).ready(() => {
+      
+      const discussionDOM = $('.discussions');
+      getDiscussions();
+
+      $('.discussions').on('click', '.load-more', () => {
+        getDiscussions();
+      });
+
+      $('.form-add-discussion').submit(e => {
+        e.preventDefault();
+
+        const newDiscussion = {
+          'site_key': 'rex',
+          'nickname': $('input[name=nickname]').val(),
+          'content': $('textarea[name=content]').val()
+        };
+
+        $.ajax({
+          type: 'POST',
+          url: 'http://mentor-program.co/mtr04group3/rexrexchian/week12/hw1/api_add_comments.php',
+          data: newDiscussion
+        }).done(function(data) {
+          if (!data.ok) {
+            alert(data.message);
+            return;
+          }
+          // make input and textarea empty by ''
+          $('input[name=nickname]').val('');
+          $('textarea[name=content]').val('');
+
+          appendDiscussionToDOM(discussionDOM, newDiscussion, true);
+        });
+      })
+    })
+
+    function getDiscussions() {
+      const discussionDOM = $('.discussions');
+
+      $('.load-more').hide();
+
+      if (isEnd) {
+        return;
+      }
+
+      getDiscussionsAPI(siteKey, lastId, data => {
+        if (!data.ok) {
+          alert(data.message);
+          return;
+        }
+
+        const discussions = data.discussions;
+
+        discussions.forEach(discussion => appendDiscussionToDOM(discussionDOM, discussion));
+
+        let length = discussions.length;
+
+        if (length === 0) {
+          isEnd = true;
+          $('.load-more').hide();
+        } else {
+          lastId = discussions[length - 1].id;
+          $('.discussions').append(loadMoreButtonHTML);
+        }
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <form class="form-add-discussion">
+      <div class="form-group">
+        <label for="form-nickname">暱稱</label>
+        <input class="form-control" id="form-nickname" name="nickname" type="text">
+        <label for="content-textarea">留言內容</label>
+        <textarea class="form-control" id="content-textarea" name="content" rows="3"></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit">送出</button>
+    </form>
+    <div class="discussions">
+    </div>
+  </div>
+</body>
+</html>

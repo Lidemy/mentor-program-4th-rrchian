@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<!--
+    details and bugs（不急）:
+    1. 刪除和編輯 task 的按鈕沒有置中對齊
+    2. 按完篩選按鈕後，篩選到的按鈕要換顏色
+    3. hover 到 task 上時才顯示編輯和刪除按鈕
+    4. RWD
+    5. 刪除線的動態效果壞掉了
+    6. body::before 跑版
+    7. task 會超出邊界 -> 使用 overflow 會造成 checkbox 和 label::after 跑版
+    8. 若 localStorage 沒有資料一開始會跑出預設的 list
+
+    github readme:
+        這份作業參考這些資源:
+        1. HTML & CSS
+        https://www.youtube.com/watch?v=IhmSidOJSeE
+        2. JS
+        https://www.youtube.com/watch?v=W7FaYfuwu70
+        3. Huli
+        
+        完成事項:
+        1. 盡量將 JS 修改成 JQuery
+
+        學習筆記:
+        1. 因為原本的資源用 JS 撰寫，修改成 JQuery 後有明顯效能變慢的感受（但有些 JS 不太清楚怎麼轉換成 JQuery 的寫法，照理來說應該可以都對應過去的嗎？）
+        2. 盡量每一個功能都能包成 function（模組化），增加可讀性
+        3. 儲存資料並非將 UI 作為 data 存到後端，而是以 localStorage 的方式
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Todo list</title>
+        <link
+          href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="main.css"/>
+        <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+        <script defer src="./script.js"></script>
+      </head>
+<body>
+    <h1 class="title">todos</h1>
+    <div class="all-tasks">
+        <h2 class="task-list-title">My lists</h2>
+        <ul class="task-list" data-lists></ul>
+        <form class="new-list-create" action="" data-new-list-form>
+            <input type="text" id="new-list" placeholder="new list here" aria-label="new-list-name" data-new-list-input>
+            <button class="btn-list" aria-label="new-list-btn">+</button>
+        </form>
+    </div>
+    <div class="todo-list" data-list-display-container>
+        <div class="todo-header">
+            <h2 class="list-title" data-list-title>預設</h2>
+            <p class="task-counter" data-list-count>x 個未完成的任務</p>
+        </div>
+        <div class="todo-body">
+            <div class="tasks" data-tasks></div>
+            <div class="new-task-creator">
+                <form action="" data-new-task-form>
+                    <input style="font-style: italic;" type="text" id="new-task" placeholder="what needs to be done?" aria-label="new-task-name" data-new-task-input>
+                    <button class="btn-task" aria-label="new-task-btn">+</button>
+                </form> 
+            </div>
+            <div class="tasks-filter">
+                <button class="btn-filter" data-filter="all">全部</button>
+                <button class="btn-filter" data-filter="incomplete">未完成</button>
+                <button class="btn-filter" data-filter="complete">已完成</button>
+            </div>
+            <div class="delete-area">
+                <button class="btn-delete" data-clear-complete-tasks-btn>刪除已完成任務</button>
+                <button class="btn-delete" data-delete-list-btn>刪除列表</button> 
+            </div>
+        </div>
+    </div>
+    <template id="task-template">
+        <div class="task">
+            <input type="checkbox">
+            <label>
+                <span class="custom-checkbox"></span>
+            </label>
+            <div class="btn-task-area">
+                <button class="btn-edit-task" aria-label="delete-edit-btn">⋯</button>
+                <button class="btn-delete-task" aria-label="delete-task-btn">×</button>
+            </div>
+        </div>
+    </template>
+</body>
+</html>
