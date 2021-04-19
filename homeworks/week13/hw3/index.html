@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Twitch Top Games</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .navbar {
+        position: fixed;
+        height: 84px;
+        display: flex;
+        left: 0;
+        right: 0;
+        top: 0;
+        justify-content: space-between;
+        align-items: center;
+        background: #00ff9f;
+        padding: 12px 40px;
+        z-index: 100;
+      }
+
+      .title {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 36px;
+      }
+
+      .gameLists {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        align-items: stretch;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 24px;
+      }
+
+      .gameLists li {
+        margin-left: 36px;
+        cursor: pointer;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        transition: all 0.2s;
+      }
+
+      .gameLists li:hover {
+        background: rgba(189, 0, 255, 0.7);
+        color: white;
+      }
+
+      main {
+        background-image: url("bg.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-size: cover;
+      }
+
+      main:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .mainWrapper {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 80px 0px;
+        text-align: center;
+        color: white;
+        position: relative;
+        min-height: 100vh;
+      }
+
+      .streamsWrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .stream {
+        width: 360px;
+        background: #333;
+        color: white;
+        text-align: left;
+        cursor: pointer;
+        transition: all 0.2s;
+        opacity: 0.9;
+        margin-left: 16px;
+        margin-top: 16px;
+        border: solid 1px;
+        box-shadow: inset 0 0 1em gold, 0 0 1em red;
+      }
+
+      .stream:hover {
+        transform: scale(1.07);
+        filter: brightness(1.2);
+        box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.5);
+        opacity: 1;
+      }
+
+      .streamImage img {
+        width: 100%;
+      }
+
+      .streamInfo {
+        display: flex;
+        align-items: center;
+        padding: 6px;
+      }
+
+      .streamInfoRight {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+      }
+
+      .streamrAvatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 12px;
+        min-width: 64px;
+      }
+
+      .streamTitle {
+        font-size: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="title">Twitch Top Games</div>
+      <ul class="gameLists"></ul>
+    </nav>
+    <main>
+      <div class="mainWrapper">
+        <div class="descWrapper">
+          <h2></h2>
+          <p class="mainDesc">
+            Top 20 popular live streams sorted by current viewers
+          </p>
+        </div>
+        <section class="streamsWrapper"></section>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
